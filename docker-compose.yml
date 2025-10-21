@@ -10,6 +10,7 @@ services:
     volumes:
       - ./${SPRINT}/API:/var/www:cached
     environment:
+      - "APP_URL=https://sw-testing-sut.duckdns.org"
       - "PHP_OPCACHE_VALIDATE_TIMESTAMPS=1"
       - "DB_PORT=3306"
       - "DB_HOST=mariadb"
@@ -27,7 +28,7 @@ services:
     ports:
       - 4200:4200
     command: >
-      bash -c "npm install --force && ng serve --host 0.0.0.0 --port 4200"
+      bash -c "npm install --force && ng serve --host 0.0.0.0 --port 4200 --disable-host-check"
 
   # The Web Server
   web:
